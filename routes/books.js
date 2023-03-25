@@ -5,6 +5,7 @@ import {
   deleteBookByID,
   addBooks,
   updateBooksByID,
+  getBookBylanguage,
 } from "../helper.js";
 import { auth } from "../middleware/auth.js";
 
@@ -27,7 +28,17 @@ router.get("/:id", async (req, res) => {
   const { id } = req.params;
   console.log(id);
   const book = await getBookByID(id);
+  console.log(book);
   book ? res.send(book) : res.status(404).send({ message: "No Book found" });
+});
+
+//get language by ID
+router.get("language/:language", async (req, res) => {
+  const{ language } = req.params;
+  console.log(language);
+  const bo = await getBookBylanguage(language);
+  console.log(bo);
+  bo ? res.send(bo) : res.status(404).send({ message: "No Book found" });
 });
 
 //delete book ID
@@ -40,7 +51,6 @@ router.delete("/:id", async (req, res) => {
 });
 
 //add books
-
 router.post("/", async (req, res) => {
   const newBooks = req.body;
   console.log(newBooks);

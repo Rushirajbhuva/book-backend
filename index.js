@@ -38,3 +38,7 @@ app.use("/books", bookRouter);
 app.use("/users", userRouter);
 
 app.listen(PORT, () => console.log("Server started on PORT ", PORT));
+
+// function genPassword(password){
+//   const salt = bcrypt(10);// bcrypt.genSalt(no. of rounds)
+// }
