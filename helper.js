@@ -8,7 +8,7 @@ export async function getAllBooks(req) {
     .toArray();
 }
 export async function getBookByID(ID) {
-  return await client.db("Books").collection("b40-b39-we").findOne({ id: id });
+  return await client.db("Books").collection("b40-b39-we").findOne({ id: ID });
 }
 export async function getBookBylanguage(language) {
   return await client.db("Books").collection("b40-b39-we").findOne({ language: language });
@@ -40,15 +40,15 @@ export async function genPassword(password) {
 
 export async function createUser(username, hashedPassword) {
   return await client
-    .db("Books")
-    .collection("b40-b39-we")
+    .db("users")
+    .collection("user")
     .insertOne({ username: username, password: hashedPassword });
 }
 
 export async function getUserByName(username) {
   return await client
-    .db("Books")
-    .collection("b40-b39-we")
+    .db("users")
+    .collection("user")
     .findOne({ username: username });
 }
 

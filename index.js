@@ -39,6 +39,10 @@ app.use("/users", userRouter);
 
 app.listen(PORT, () => console.log("Server started on PORT ", PORT));
 
-// function genPassword(password){
-//   const salt = bcrypt(10);// bcrypt.genSalt(no. of rounds)
-// }
+async function genPassword(password){
+  const salt = await bcrypt.genSalt(10);//bcrypt.genSalt(no. of round)
+  console.log(salt);
+  const hashedPassword = await bcrypt.hash(password,salt);
+  console.log("hashedPassword",hashedPassword);
+}
+console.log(genPassword("password@123"));

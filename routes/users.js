@@ -6,12 +6,15 @@ import {
   createUser,
   getUserByName,
   getUserList,
+  
 } from "../helper.js";
 const router = express.Router();
 
 router.post("/signup", async (req, res) => {
   const { username, password } = req.body;
   console.log(username, password);
+  //const hashedPassword = await genPassword(password);
+  //res.send(hashedPassword);
   const isUserExist = await getUserByName(username);
   console.log(isUserExist);
   if (isUserExist) {
